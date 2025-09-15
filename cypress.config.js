@@ -5,6 +5,9 @@ module.exports = defineConfig({
   e2e: {
     baseUrl: 'https://front.serverest.dev',
     defaultCommandTimeout: 15000,
+    env: {
+      path: 'https://serverest.dev'
+    },
     setupNodeEvents(on, config) {
       dotenv.config();
       config.env.COMMON_EMAIL = process.env.COMMON_EMAIL;
