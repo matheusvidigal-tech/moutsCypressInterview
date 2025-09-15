@@ -1,8 +1,11 @@
-const defaultSearchProductId = 'BeeJh5lz3k6kSIzA';
+let defaultSearchProductId;
 
 describe('Products route tests', () => {
     before(() => {
         cy.apiLogin(Cypress.env('COMMON_EMAIL'), Cypress.env('COMMON_PASSWORD'));
+         cy.fixture('test-product.json').then((data) => {
+             defaultSearchProductId = (data.id);
+            });
     });
  
   it('Should not show any empty field on product item', () => {
