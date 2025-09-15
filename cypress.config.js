@@ -1,8 +1,10 @@
-const { defineConfig } = require("cypress");
+const { defineConfig } = require('cypress');
 const dotenv = require('dotenv');
 
 module.exports = defineConfig({
   e2e: {
+    baseUrl: 'https://front.serverest.dev',
+    defaultCommandTimeout: 15000,
     setupNodeEvents(on, config) {
       dotenv.config();
       config.env.COMMON_EMAIL = process.env.COMMON_EMAIL;
