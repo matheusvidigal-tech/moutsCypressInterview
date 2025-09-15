@@ -1,0 +1,32 @@
+name: Merge pipeline
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: build
+        run: npm install
+
+      - name: run frontend tests
+        run: npx cypress run --spec "cypress/e2e/tests/**/*.cy.js"
+        env:
+          COMMON_EMAIL: ${{ secrets.COMMON_EMAIL }}
+          COMMON_PASSWORD: ${{ secrets.COMMON_PASSWORD }}
+          ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+
+      - name: run api tests
+        run: npx cypress run --spec "cypress/e2e/api/**/*.cy.js"
+        env:
+          COMMON_EMAIL: ${{ secrets.COMMON_EMAIL }}
+          COMMON_PASSWORD: ${{ secrets.COMMON_PASSWORD }}
+          ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
