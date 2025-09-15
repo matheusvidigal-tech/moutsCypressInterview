@@ -1,0 +1,6 @@
+{
+  "nome": "Produto {VAR} Teste",
+  "preco": "50",
+  "descricao": "Produto criado via teste automatizado",
+  "quantidade": "100"
+}
