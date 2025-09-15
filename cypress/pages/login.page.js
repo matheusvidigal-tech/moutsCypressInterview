@@ -22,7 +22,7 @@ class LoginPage extends BasePage {
      * @param {boolean} expectSuccess Informa se o sucesso na função deve ocorrer
      */
     performLogin(email, password, expectSuccess = true) {
-        cy.log(email)
+        cy.visit('/login');
         cy.get(this.inputs.email).type(email);
         cy.get(this.inputs.password).type(password);
         cy.get(this.buttons.login).click();
