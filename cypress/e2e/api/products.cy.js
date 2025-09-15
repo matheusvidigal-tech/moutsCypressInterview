@@ -1,0 +1,24 @@
+
+describe('Products route tests', () => {
+
+    before(() => {
+        cy.apiLogin(Cypress.env('COMMON_EMAIL'), Cypress.env('COMMON_PASSWORD'));
+    });
+ 
+  it('Should not show any empty field on product item', () => {
+    cy.request({
+    method: 'GET',
+    url: `${Cypress.env("path")}/produtos/BeeJh5lz3k6kSIzA`,
+    headers: {
+        'Authorization': Cypress.env('token')
+      }
+    })
+    .then((response) => {
+    expect(response.body.nome).to.not.be.empty;
+    expect(response.body.preco).to.be.a('number');
+    expect(response.body.descricao).to.not.be.empty;
+    expect(response.body.quantidade).to.be.a('number');
+    expect(response.body._id).to.not.be.empty;
+  });
+  });
+});
