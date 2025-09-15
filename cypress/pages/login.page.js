@@ -26,7 +26,7 @@ class LoginPage extends BasePage {
         cy.get(this.inputs.email).type(email);
         cy.get(this.inputs.password).type(password);
         cy.get(this.buttons.login).click();
-        if(expectSuccess === true) {
+        if (expectSuccess === true) {
             this.checkLoginRedirect();
         }
     }
